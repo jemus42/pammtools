@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pammtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.5.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.5.7</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/adibender/pammtools">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -136,12 +136,12 @@
 
       
 
-      </header><div class="row">
+      </header><script src="basics_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Basic Modeling</h1>
             
-            <h4 class="date">2021-05-27</h4>
+            <h4 class="date">2021-06-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adibender/pammtools/blob/master/vignettes/basics.Rmd"><code>vignettes/basics.Rmd</code></a></small>
       <div class="hidden name"><code>basics.Rmd</code></div>
@@ -160,15 +160,15 @@
 <li><p>there are no ties (i.e., simultaneous events) in the data and</p></li>
 <li><p>all unique event (and censoring) times are used as interval cut points in order to transform the data into the format suitable for PEMs (see <code><a href="../reference/as_ped.html">?as_ped</a></code> and the <a href="data-transformation.html">vignette on data transformation</a>).</p></li>
 </ol>
-<p>Estimates can differ between the two approaches due to a more crude handling of ties in the PEM approach <span class="citation">(Whitehead <a href="#ref-whitehead1980">1980</a>)</span>. In practice these differences are usually negligible (see examples below).</p>
+<p>Estimates can differ between the two approaches due to a more crude handling of ties in the PEM approach <span class="citation">(Whitehead <a href="#ref-whitehead1980" role="doc-biblioref">1980</a>)</span>. In practice these differences are usually negligible (see examples below).</p>
 <div id="subset-with-unique-event-times" class="section level3">
 <h3 class="hasAnchor">
 <a href="#subset-with-unique-event-times" class="anchor"></a>Subset with unique event times</h3>
-<p>We first demonstrate the equivalence using a subset of the Veterans’ data <span class="citation">(Kalbfleisch and Prentice <a href="#ref-Kalbfleisch1980">1980</a>)</span> provided in the <code>survival</code> package:</p>
+<p>We first demonstrate the equivalence using a subset of the Veterans’ data <span class="citation">(Kalbfleisch and Prentice <a href="#ref-Kalbfleisch1980" role="doc-biblioref">1980</a>)</span> provided in the <code>survival</code> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival">survival</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">mgcv</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/adibender/pammtools">pammtools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://adibender.github.io/pammtools/">pammtools</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"veteran"</span>, package <span class="op">=</span> <span class="st">"survival"</span><span class="op">)</span> <span class="co"># load veteran data</span></code></pre></div>
@@ -212,7 +212,7 @@
 <div id="piece-wise-exponential-additive-model" class="section level2">
 <h2 class="hasAnchor">
 <a href="#piece-wise-exponential-additive-model" class="anchor"></a>Piece-wise exponential additive model</h2>
-<p>PAMs have two main advantages over PEMs <span class="citation">(Bender, Groll, and Scheipl <a href="#ref-Bender2018a">2018</a>)</span>:</p>
+<p>PAMs have two main advantages over PEMs <span class="citation">(Bender, Groll, and Scheipl <a href="#ref-Bender2018a" role="doc-biblioref">2018</a>)</span>:</p>
 <ul>
 <li><p>PAM estimation scales better when the number of intervals becomes large: PEMs need to estimate one parameter per interval for the baseline hazard, while the number of parameters in PAMs only depends on the number of basis functions used for the spline estimate of the baseline hazard.</p></li>
 <li><p>In PEMs, baseline hazard estimates for each interval can vary a lot between neighboring intervals, especially when intervals only contain few events. For PAMs on the other hand estimates of the baseline hazard in neighboring intervals are similar due to penalization unless the data provides very strong evidence for large changes between neighboring intervals.</p></li>
@@ -235,13 +235,13 @@
 <a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references">
 <div id="ref-Bender2018a">
-<p>Bender, Andreas, Andreas Groll, and Fabian Scheipl. 2018. “A Generalized Additive Model Approach to Time-to-Event Analysis.” <em>Statistical Modelling</em> 18 (3-4): 299–321. <a href="https://doi.org/10.1177/1471082X17748083" class="uri">https://doi.org/10.1177/1471082X17748083</a>.</p>
+<p>Bender, Andreas, Andreas Groll, and Fabian Scheipl. 2018. “A Generalized Additive Model Approach to Time-to-Event Analysis.” <em>Statistical Modelling</em> 18 (3-4): 299–321. <a href="https://doi.org/10.1177/1471082X17748083">https://doi.org/10.1177/1471082X17748083</a>.</p>
 </div>
 <div id="ref-Kalbfleisch1980">
 <p>Kalbfleisch, J., and R. Prentice. 1980. <em>The Statistical Analysis of Failure Time Data</em>. New York: Wiley.</p>
 </div>
 <div id="ref-whitehead1980">
-<p>Whitehead, John. 1980. “Fitting Cox’s Regression Model to Survival Data Using GLIM.” <em>Applied Statistics</em> 29 (3). JSTOR: 268–75.</p>
+<p>Whitehead, John. 1980. “Fitting Cox’s Regression Model to Survival Data Using GLIM.” <em>Applied Statistics</em> 29 (3): 268–75.</p>
 </div>
 </div>
 </div>

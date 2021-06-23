@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pammtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.5.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.5.7</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/adibender/pammtools">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -136,12 +136,12 @@
 
       
 
-      </header><div class="row">
+      </header><script src="cumulative-effects_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Cumulative Effects</h1>
             
-            <h4 class="date">2021-05-27</h4>
+            <h4 class="date">2021-06-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adibender/pammtools/blob/master/vignettes/cumulative-effects.Rmd"><code>vignettes/cumulative-effects.Rmd</code></a></small>
       <div class="hidden name"><code>cumulative-effects.Rmd</code></div>
@@ -150,7 +150,7 @@
 
     
     
-<p>This vignette provides a short reference for the estimation and interpretation of cumulative effects using <strong><code>pammtools</code></strong>. For a more detailed overview see <span class="citation">Bender and Scheipl (<a href="#ref-Bender2018f">2018</a>)</span>. In the <a href="cumulative-effects.html#introduction">first section</a>, a short introduction to cumulative effects is provided. In the <a href="cumulative-effects.html#example-sofa-score-and-extubation">second section</a>, we present a worked example on a real data set, including necessary data transformation, model estimation and visualization.</p>
+<p>This vignette provides a short reference for the estimation and interpretation of cumulative effects using <strong><code>pammtools</code></strong>. For a more detailed overview see <span class="citation">Bender and Scheipl (<a href="#ref-Bender2018f" role="doc-biblioref">2018</a>)</span>. In the <a href="cumulative-effects.html#introduction">first section</a>, a short introduction to cumulative effects is provided. In the <a href="cumulative-effects.html#example-sofa-score-and-extubation">second section</a>, we present a worked example on a real data set, including necessary data transformation, model estimation and visualization.</p>
 <details><p><summary>R Setup</summary></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
@@ -158,7 +158,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">mgcv</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/adibender/pammtools">pammtools</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://adibender.github.io/pammtools/">pammtools</a></span><span class="op">)</span></code></pre></div>
 </details><div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
@@ -175,7 +175,7 @@
 <li>
 <span class="math inline">\(\mathbf{z} = \{z(t_{z}):t_z \leq t\}\)</span>: the exposure history of TDC <span class="math inline">\(z\)</span>, i.e., all recorded observations of the TDC (at time t).</li>
 </ul>
-<p>Given these definitions, one possible specification of a model with a cumulative effect was suggested by <span class="citation">Sylvestre and Abrahamowicz (<a href="#ref-Sylvestre2009">2009</a>)</span> and is given below:</p>
+<p>Given these definitions, one possible specification of a model with a cumulative effect was suggested by <span class="citation">Sylvestre and Abrahamowicz (<a href="#ref-Sylvestre2009" role="doc-biblioref">2009</a>)</span> and is given below:</p>
 <p><span class="math display">\[
 \lambda(t|\mathbf{z}) = \lambda_0(t)\exp\left(\sum_{t_z \leq t} h(t-t_z)z(t_z)\right)
 \]</span></p>
@@ -222,7 +222,7 @@ Illustration of two different lag-lead windows.
 <div id="example-sofa-score-and-extubation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-sofa-score-and-extubation" class="anchor"></a>Example: SOFA-score and extubation</h2>
-<p>For an illustration of the functionality that <strong><code>pammtools</code></strong> provides to work with cumulative effects, we use (a sample) of the data analyzed in <span class="citation">Heyard et al. (<a href="#ref-Heyard2018">2018</a>)</span> and provided in the package <strong><code>TBFmultinomial</code></strong> (note that their analyses had a totally different goal, including modeling of competing risks; here we simply use the data for illustrative purposes).</p>
+<p>For an illustration of the functionality that <strong><code>pammtools</code></strong> provides to work with cumulative effects, we use (a sample) of the data analyzed in <span class="citation">Heyard et al. (<a href="#ref-Heyard2018" role="doc-biblioref">2018</a>)</span> and provided in the package <strong><code>TBFmultinomial</code></strong> (note that their analyses had a totally different goal, including modeling of competing risks; here we simply use the data for illustrative purposes).</p>
 <p>In the following analysis, we will model the (cause-specific) hazard for the event <code>extubation</code>, considering all competing events as censoring events. Covariates include <code>gender</code>, <code>type</code> (admission type), <code>SAPSadmission</code> (SAPS score at admission) and the time-dependent covariate <code>SOFA</code> score (lower scores indicate better health).</p>
 <p>To use the data for our purposes, we first perform some preprocessing, which produces two data sets:</p>
 <ul>
@@ -295,7 +295,7 @@ SOFA profiles for individual patients. Each line represents a patient, each pixe
 <div id="data-transformation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#data-transformation" class="anchor"></a>Data transformation</h3>
-<p>For illustration, we fit a DLNM <span class="citation">(Gasparrini et al. <a href="#ref-Gasparrini2017">2017</a>)</span> with cumulative effect of the SOFA score (<span class="math inline">\(z\)</span>) as defined below:</p>
+<p>For illustration, we fit a DLNM <span class="citation">(Gasparrini et al. <a href="#ref-Gasparrini2017" role="doc-biblioref">2017</a>)</span> with cumulative effect of the SOFA score (<span class="math inline">\(z\)</span>) as defined below:</p>
 <p><span class="math display">\[
 g(\mathbf{z}, t) = \int_{\mathcal{T}(t)}h(t-t_z, z(t_z))\mathrm{d}t_z,
 \]</span></p>
@@ -362,9 +362,9 @@ Lag-lead window for the first 10 days of the follow-up.
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Approximate significance of smooth terms:
-##                           edf Ref.df Chi.sq  p-value    
-## s(tend)                 1.000  1.000  2.269    0.132    
-## te(day_latency,SOFA):LL 5.395  6.046 65.433 3.52e-12 ***
+##                           edf Ref.df Chi.sq p-value    
+## s(tend)                 1.000  1.000  2.269   0.132    
+## te(day_latency,SOFA):LL 5.395  6.046 65.433  &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -442,16 +442,16 @@ Lag-lead window for the first 10 days of the follow-up.
 <a href="#references" class="anchor"></a>References</h2>
 <div id="refs" class="references">
 <div id="ref-Bender2018f">
-<p>Bender, Andreas, and Fabian Scheipl. 2018. “Pammtools: Piece-Wise Exponential Additive Mixed Modeling Tools.” <em>arXiv:1806.01042 [Stat]</em>. <a href="http://arxiv.org/abs/1806.01042" class="uri">http://arxiv.org/abs/1806.01042</a>.</p>
+<p>Bender, Andreas, and Fabian Scheipl. 2018. “Pammtools: Piece-Wise Exponential Additive Mixed Modeling Tools.” <em>arXiv:1806.01042 [Stat]</em>. <a href="http://arxiv.org/abs/1806.01042">http://arxiv.org/abs/1806.01042</a>.</p>
 </div>
 <div id="ref-Gasparrini2017">
-<p>Gasparrini, Antonio, Fabian Scheipl, Ben Armstrong, and Michael G. Kenward. 2017. “A Penalized Framework for Distributed Lag Non-Linear Models.” <em>Biometrics</em> 73: 938–48. <a href="https://doi.org/10.1111/biom.12645" class="uri">https://doi.org/10.1111/biom.12645</a>.</p>
+<p>Gasparrini, Antonio, Fabian Scheipl, Ben Armstrong, and Michael G. Kenward. 2017. “A Penalized Framework for Distributed Lag Non-Linear Models.” <em>Biometrics</em> 73: 938–48. <a href="https://doi.org/10.1111/biom.12645">https://doi.org/10.1111/biom.12645</a>.</p>
 </div>
 <div id="ref-Heyard2018">
-<p>Heyard, Rachel, Jean-François Timsit, Wafa Ibn Essaied, and Leonhard Held. 2018. “Dynamic Clinical Prediction Models for Discrete Time-to-Event Data with Competing Risks—A Case Study on the OUTCOMEREA Database.” <em>Biometrical Journal</em> 0 (0). <a href="https://doi.org/10.1002/bimj.201700259" class="uri">https://doi.org/10.1002/bimj.201700259</a>.</p>
+<p>Heyard, Rachel, Jean-François Timsit, Wafa Ibn Essaied, and Leonhard Held. 2018. “Dynamic Clinical Prediction Models for Discrete Time-to-Event Data with Competing Risks—A Case Study on the OUTCOMEREA Database.” <em>Biometrical Journal</em> 0 (0). <a href="https://doi.org/10.1002/bimj.201700259">https://doi.org/10.1002/bimj.201700259</a>.</p>
 </div>
 <div id="ref-Sylvestre2009">
-<p>Sylvestre, Marie-Pierre, and Michal Abrahamowicz. 2009. “Flexible Modeling of the Cumulative Effects of Time-Dependent Exposures on the Hazard.” <em>Statistics in Medicine</em> 28 (27): 3437–53. <a href="https://doi.org/10.1002/sim.3701" class="uri">https://doi.org/10.1002/sim.3701</a>.</p>
+<p>Sylvestre, Marie-Pierre, and Michal Abrahamowicz. 2009. “Flexible Modeling of the Cumulative Effects of Time-Dependent Exposures on the Hazard.” <em>Statistics in Medicine</em> 28 (27): 3437–53. <a href="https://doi.org/10.1002/sim.3701">https://doi.org/10.1002/sim.3701</a>.</p>
 </div>
 </div>
 </div>

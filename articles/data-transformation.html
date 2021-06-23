@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pammtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.5.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.5.7</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/adibender/pammtools">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -136,12 +136,12 @@
 
       
 
-      </header><div class="row">
+      </header><script src="data-transformation_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Data Transformation</h1>
             
-            <h4 class="date">2021-05-27</h4>
+            <h4 class="date">2021-06-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adibender/pammtools/blob/master/vignettes/data-transformation.Rmd"><code>vignettes/data-transformation.Rmd</code></a></small>
       <div class="hidden name"><code>data-transformation.Rmd</code></div>
@@ -153,7 +153,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/adibender/pammtools">pammtools</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://adibender.github.io/pammtools/">pammtools</a></span><span class="op">)</span></code></pre></div>
 <p>In this vignette we provide details on transforming data into a format suitable to fit piece-wise exponential (additive) models (PAM). Three main cases need to be distinguished</p>
 <ol style="list-style-type: decimal">
 <li><p><a href="data-transformation.html#standard-time-to-event-data">Data without time-dependent covariates</a></p></li>
@@ -273,7 +273,7 @@
 <h2 class="hasAnchor">
 <a href="#left-truncated-data" class="anchor"></a>Left-truncated Data</h2>
 <p>In left truncated data, subjects enter the risk set at some time-point unequal to zero. Such data usually ships in the so called start-stop notation, where for each subject the start time specifies the left-truncation time (can also be 0) and the stop time the time-to-event, which can be right-censored.</p>
-<p>For an illustration, we use a data set on infant mortality and maternal death available in the <strong><code>eha</code></strong> package (see <code><a href="https://rdrr.io/pkg/eha/man/infants.html">?eha::infants</a></code>) for details.</p>
+<p>For an illustration, we use a data set on infant mortality and maternal death available in the <strong><code>eha</code></strong> package (see <code><a href="http://ehar.se/r/eha/reference/infants.html">?eha::infants</a></code>) for details.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">infants</span>, package <span class="op">=</span> <span class="st">"eha"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">infants</span><span class="op">)</span></code></pre></div>
@@ -342,7 +342,8 @@
 g(\mathbf{z}, t) = \int_{\mathcal{T}(t)} h(t, t_z, z(t_z))\mathrm{d}t_z
 \]</span> Here</p>
 <ul>
-<li>the three-variate function <span class="math inline">\(h(t,t_z,z(t_z))\)</span> defines the so-called <em>partial effects</em> of the TDC <span class="math inline">\(z(t_z)\)</span> observed at exposure time <span class="math inline">\(t_z\)</span> on the hazard at time <span class="math inline">\(t\)</span> <span class="citation">(Bender et al. 2018)</span>. The general partial effect definition given above is only one possibility, other common choices are<br> 
+<li>
+<p>the three-variate function <span class="math inline">\(h(t,t_z,z(t_z))\)</span> defines the so-called <em>partial effects</em> of the TDC <span class="math inline">\(z(t_z)\)</span> observed at exposure time <span class="math inline">\(t_z\)</span> on the hazard at time <span class="math inline">\(t\)</span> <span class="citation">(Bender et al. 2018)</span>. The general partial effect definition given above is only one possibility, other common choices are<br> </p>
 <ul>
 <li>
 <span class="math inline">\(h(t-t_z)z(t_z)\)</span> (This is the WCE model by <span class="citation">Sylvestre and Abrahamowicz (2009)</span>) <br> </li>
@@ -635,13 +636,13 @@ g(\mathbf{z}, t) = \int_{\mathcal{T}(t)} h(t, t_z, z(t_z))\mathrm{d}t_z
 <a href="#references" class="anchor"></a>References</h2>
 <div id="refs" class="references">
 <div id="ref-Bender2018">
-<p>Bender, Andreas, Fabian Scheipl, Wolfgang Hartl, Andrew G. Day, and Helmut Küchenhoff. 2018. “Penalized Estimation of Complex, Non-Linear Exposure-Lag-Response Associations.” <em>Biostatistics</em>. <a href="https://doi.org/10.1093/biostatistics/kxy003" class="uri">https://doi.org/10.1093/biostatistics/kxy003</a>.</p>
+<p>Bender, Andreas, Fabian Scheipl, Wolfgang Hartl, Andrew G. Day, and Helmut Küchenhoff. 2018. “Penalized Estimation of Complex, Non-Linear Exposure-Lag-Response Associations.” <em>Biostatistics</em>. <a href="https://doi.org/10.1093/biostatistics/kxy003">https://doi.org/10.1093/biostatistics/kxy003</a>.</p>
 </div>
 <div id="ref-Gasparrini2017">
-<p>Gasparrini, Antonio, Fabian Scheipl, Ben Armstrong, and Michael G. Kenward. 2017. “A Penalized Framework for Distributed Lag Non-Linear Models.” <em>Biometrics</em> 73: 938–48. <a href="https://doi.org/10.1111/biom.12645" class="uri">https://doi.org/10.1111/biom.12645</a>.</p>
+<p>Gasparrini, Antonio, Fabian Scheipl, Ben Armstrong, and Michael G. Kenward. 2017. “A Penalized Framework for Distributed Lag Non-Linear Models.” <em>Biometrics</em> 73: 938–48. <a href="https://doi.org/10.1111/biom.12645">https://doi.org/10.1111/biom.12645</a>.</p>
 </div>
 <div id="ref-Sylvestre2009">
-<p>Sylvestre, Marie-Pierre, and Michal Abrahamowicz. 2009. “Flexible Modeling of the Cumulative Effects of Time-Dependent Exposures on the Hazard.” <em>Statistics in Medicine</em> 28 (27): 3437–53. <a href="https://doi.org/10.1002/sim.3701" class="uri">https://doi.org/10.1002/sim.3701</a>.</p>
+<p>Sylvestre, Marie-Pierre, and Michal Abrahamowicz. 2009. “Flexible Modeling of the Cumulative Effects of Time-Dependent Exposures on the Hazard.” <em>Statistics in Medicine</em> 28 (27): 3437–53. <a href="https://doi.org/10.1002/sim.3701">https://doi.org/10.1002/sim.3701</a>.</p>
 </div>
 </div>
 </div>

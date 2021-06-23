@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pammtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.5.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.5.7</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/adibender/pammtools">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -136,12 +136,12 @@
 
       
 
-      </header><div class="row">
+      </header><script src="convenience_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Workflow and convenience functions</h1>
             
-            <h4 class="date">2021-05-27</h4>
+            <h4 class="date">2021-06-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adibender/pammtools/blob/master/vignettes/convenience.Rmd"><code>vignettes/convenience.Rmd</code></a></small>
       <div class="hidden name"><code>convenience.Rmd</code></div>
@@ -153,7 +153,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">mgcv</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/adibender/pammtools">pammtools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://adibender.github.io/pammtools/">pammtools</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Survival analysis entails a set of standard tasks beyond model estimation which need to be performed in most real world applications. These task include:</p>
@@ -163,8 +163,8 @@
 <li>visualization of non-linear covariate effects</li>
 <li>…</li>
 </ul>
-<p>The <strong><code>pammtools</code></strong> package provides many convenience functions to facilitate these tasks. The overall philosophy of the package is to provide functions that return the underlying data used for visualization in a <em>tidy</em> format <span class="citation">(Wickham and others <a href="#ref-wickham2014">2014</a>)</span>, such that everybody can use familiar tools for further processing. In addition, some (high level) convenience functions for visualization are also included.</p>
-<p>To illustrate the usual workflow and some of the convenience functions provided by <strong><code>pammtools</code></strong>, we will use the <code>tumor</code> in the following sections. For a more complete overview see <span class="citation">Bender and Scheipl (<a href="#ref-Bender2018f">2018</a>)</span>.</p>
+<p>The <strong><code>pammtools</code></strong> package provides many convenience functions to facilitate these tasks. The overall philosophy of the package is to provide functions that return the underlying data used for visualization in a <em>tidy</em> format <span class="citation">(Wickham and others <a href="#ref-wickham2014" role="doc-biblioref">2014</a>)</span>, such that everybody can use familiar tools for further processing. In addition, some (high level) convenience functions for visualization are also included.</p>
+<p>To illustrate the usual workflow and some of the convenience functions provided by <strong><code>pammtools</code></strong>, we will use the <code>tumor</code> in the following sections. For a more complete overview see <span class="citation">Bender and Scheipl (<a href="#ref-Bender2018f" role="doc-biblioref">2018</a>)</span>.</p>
 <div id="hazard-cumulative-hazard-and-survival-probabilities" class="section level2">
 <h2 class="hasAnchor">
 <a href="#hazard-cumulative-hazard-and-survival-probabilities" class="anchor"></a>Hazard, cumulative hazard and survival probabilities</h2>
@@ -297,7 +297,7 @@
 <a href="#references" class="anchor"></a>References</h2>
 <div id="refs" class="references">
 <div id="ref-Bender2018f">
-<p>Bender, Andreas, and Fabian Scheipl. 2018. “Pammtools: Piece-Wise Exponential Additive Mixed Modeling Tools.” <em>arXiv:1806.01042 [Stat]</em>. <a href="http://arxiv.org/abs/1806.01042" class="uri">http://arxiv.org/abs/1806.01042</a>.</p>
+<p>Bender, Andreas, and Fabian Scheipl. 2018. “Pammtools: Piece-Wise Exponential Additive Mixed Modeling Tools.” <em>arXiv:1806.01042 [Stat]</em>. <a href="http://arxiv.org/abs/1806.01042">http://arxiv.org/abs/1806.01042</a>.</p>
 </div>
 <div id="ref-wickham2014">
 <p>Wickham, Hadley, and others. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10): 1–23.</p>

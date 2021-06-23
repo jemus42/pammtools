@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pammtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.5.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.5.7</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/adibender/pammtools">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -136,12 +136,12 @@
 
       
 
-      </header><div class="row">
+      </header><script src="left-truncation_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Left Truncation</h1>
             
-            <h4 class="date">2021-05-27</h4>
+            <h4 class="date">2021-06-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adibender/pammtools/blob/master/vignettes/left-truncation.Rmd"><code>vignettes/left-truncation.Rmd</code></a></small>
       <div class="hidden name"><code>left-truncation.Rmd</code></div>
@@ -154,7 +154,7 @@
 <p>We first we load some libraries as well as the data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ehar.se/r/eha/">eha</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/adibender/pammtools">pammtools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://adibender.github.io/pammtools/">pammtools</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">infants</span>, package <span class="op">=</span> <span class="st">"eha"</span><span class="op">)</span>
@@ -167,17 +167,17 @@
 ## 5       2    13  365     0  alive  23 girl Nedertornea married  other 1847
 ## 6       2    13  365     0  alive  23 girl Nedertornea married  other 1848</code></pre>
 <p>The header shows that we have information on entry (<code>enter</code>) and exit (<code>exit</code>) times into the riskset. Survival is indicated by the <code>event</code> variable. The variable of interest is <code>mother</code>, i.e., whether mother was alive or dead. For each child who’s mother died, 2 children of the same age and same values for the other covariates were included into the study who’s mother was still alive at inclusion age. The maximum follow up was 365 days.</p>
-<p>As a proof of concept we show that we can recreate the effects found by the Cox model for left truncated data as implemented in <code><a href="https://rdrr.io/pkg/eha/man/coxreg.html">eha::coxreg</a></code>:</p>
+<p>As a proof of concept we show that we can recreate the effects found by the Cox model for left truncated data as implemented in <code><a href="http://ehar.se/r/eha/reference/coxreg.html">eha::coxreg</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># fit cox model for left-truncated data</span>
-<span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/eha/man/coxreg.html">coxreg</a></span><span class="op">(</span>
-  formula <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/eha/man/import_Surv.html">Surv</a></span><span class="op">(</span><span class="va">enter</span>, <span class="va">exit</span>, <span class="va">event</span><span class="op">)</span> <span class="op">~</span>  <span class="va">mother</span>,
+<span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://ehar.se/r/eha/reference/coxreg.html">coxreg</a></span><span class="op">(</span>
+  formula <span class="op">=</span> <span class="fu"><a href="http://ehar.se/r/eha/reference/import_Surv.html">Surv</a></span><span class="op">(</span><span class="va">enter</span>, <span class="va">exit</span>, <span class="va">event</span><span class="op">)</span> <span class="op">~</span>  <span class="va">mother</span>,
   data <span class="op">=</span> <span class="va">infants</span><span class="op">)</span>
 <span class="co"># fit pam to left-truncated data</span>
-<span class="va">infants_ped</span> <span class="op">&lt;-</span> <span class="va">infants</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/as_ped.html">as_ped</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/eha/man/import_Surv.html">Surv</a></span><span class="op">(</span><span class="va">enter</span>, <span class="va">exit</span>, <span class="va">event</span><span class="op">)</span><span class="op">~</span><span class="va">.</span><span class="op">)</span>
+<span class="va">infants_ped</span> <span class="op">&lt;-</span> <span class="va">infants</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/as_ped.html">as_ped</a></span><span class="op">(</span><span class="fu"><a href="http://ehar.se/r/eha/reference/import_Surv.html">Surv</a></span><span class="op">(</span><span class="va">enter</span>, <span class="va">exit</span>, <span class="va">event</span><span class="op">)</span><span class="op">~</span><span class="va">.</span><span class="op">)</span>
 <span class="va">pam</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pamm.html">pamm</a></span><span class="op">(</span>
   formula <span class="op">=</span> <span class="va">ped_status</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/s.html">s</a></span><span class="op">(</span><span class="va">tend</span><span class="op">)</span><span class="op">+</span> <span class="va">mother</span>,
-  trafo_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/eha/man/import_Surv.html">Surv</a></span><span class="op">(</span><span class="va">enter</span>, <span class="va">exit</span>, <span class="va">event</span><span class="op">)</span><span class="op">~</span><span class="va">.</span><span class="op">)</span>,
+  trafo_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="fu"><a href="http://ehar.se/r/eha/reference/import_Surv.html">Surv</a></span><span class="op">(</span><span class="va">enter</span>, <span class="va">exit</span>, <span class="va">event</span><span class="op">)</span><span class="op">~</span><span class="va">.</span><span class="op">)</span>,
   data <span class="op">=</span> <span class="va">infants</span><span class="op">)</span>
 <span class="co"># compare coefficients</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">pam</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">)</span></code></pre></div>
